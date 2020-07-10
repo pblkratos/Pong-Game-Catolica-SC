@@ -1,9 +1,9 @@
 var canvas = document.getElementById("mycanvas");
 var ctx = canvas.getContext("2d");
-
 let play = document.querySelector("#play");
 
 play.onclick = function names(){
+	canvas.removeAttribute("hidden");
 	let player1 = document.getElementById("player1").value;
 	let player2 = document.getElementById("player2").value;
 
@@ -37,6 +37,9 @@ play.onclick = function names(){
 		score:0,
 		speed:15
 	};
+
+	player1 == "" ? player1="Player 1" : player1=player1;
+	player2 == "" ? player2="Player 2" : player2=player2;
 
 	document.addEventListener("keydown", function (e) {
 		teclas[e.keyCode] = true;
@@ -92,7 +95,7 @@ play.onclick = function names(){
 		};
 
 	function desenha() {
-
+		
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		
 		moveblock();
