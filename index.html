@@ -26,12 +26,38 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-success" id="play">Jogar</button>
-                <button type="button" class="btn btn-info ml-2" id="instruction">Instruções</button>
+                <button type="button" class="btn btn-info ml-3" data-toggle="modal" data-target="#exampleModal">
+                    Instruções
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Instruções do Pong</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p class="text-center">Player 1</p>
+                          <p class="text-center">W - Para subir a barra</p>
+                          <p class="text-center">A - Para descer a barra</p>
+                          <p class="text-center">Player 2</p>
+                          <p class="text-center">Up(seta) - Para subir a barra</p>
+                          <p class="text-center">Down(seta) - Para descer a barra</p>
+                          <p class="text-center">O primeiro que fizer 3 pontos vence.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="col-lg-4"></div>
             </div>
         </div>
 
-        <canvas height= "600" width="600" hidden id="mycanvas">Seu navegador não é compativel com este elemento, por favor atualize o seu browser.</canvas>
+        <h1 class="campeao" id="campeao"></h1>
         
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

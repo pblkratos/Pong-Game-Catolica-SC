@@ -1,8 +1,12 @@
-var canvas = document.getElementById("mycanvas");
+var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
+canvas.width = 600;
+canvas.height = 600;
 let play = document.querySelector("#play");
 
-play.onclick = function names(){
+function playing(){
+	play.setAttribute("disabled",true);
+	document.body.appendChild(canvas);
 	canvas.removeAttribute("hidden");
 	let player1 = document.getElementById("player1").value;
 	let player2 = document.getElementById("player2").value;
@@ -17,25 +21,25 @@ play.onclick = function names(){
 		dirx: -1,
 		diry: 1,
 		mod: 0,
-		speed: 1
+		speed: 0.7
 	};
 
 	var esquerda = {
-		x: 10,
+		x: 0,
 		y: canvas.height / 2 - 60,
 		altura: 120,
-		largura: 30,
-		score:0,
-		speed:15
+		largura: 10,
+		score: 0,
+		speed: 8
 	};
 
 	var direita = {
-		x: 560,
+		x: 590,
 		y: canvas.height / 2 - 60,
 		altura: 120,
-		largura: 30,
-		score:0,
-		speed:15
+		largura: 10,
+		score: 0,
+		speed: 8
 	};
 
 	player1 == "" ? player1="Player 1" : player1=player1;
@@ -76,10 +80,15 @@ play.onclick = function names(){
 			bola.x += (bola.speed + bola.mod) * bola.dirx;
 			bola.y += (bola.speed + bola.mod) * bola.diry;
 		if(bola.x < esquerda.x + esquerda.largura - 15){
-			newGame(player1);
-		}else if (bola.x + bola.largura > direita.x + 15){
 			newGame(player2);
+		}else if (bola.x + bola.largura > direita.x + 15){
+			newGame(player1);
 		};
+	};
+
+	function placar(winner){
+		h1 = document.querySelector("#campeao");
+		h1.innerHTML = ("Campeão: " + winner);
 	};
 
 	function newGame(winner) {
@@ -92,10 +101,15 @@ play.onclick = function names(){
 			bola.y = canvas.height / 2 - bola.altura / 2;
 			bola.x = canvas.width /2 - bola.largura /2;
 			bola.mod = 0
+
+		if(esquerda.score == 3){
+			placar(player1);
+		}else if(direita.score == 3)
+			placar(player2);
 		};
 
 	function desenha() {
-		
+
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		
 		moveblock();
@@ -110,8 +124,9 @@ play.onclick = function names(){
 		ctx.fillText(player1 + " : " + esquerda.score, 50, 20);
 		ctx.fillText(player2 + " : " + direita.score, canvas.width - 150, 20);
 
-	}
+	};
 
 	setInterval(desenha, 5)
 }
 
+play.addEventListener("click", playing, false);
