@@ -7,13 +7,12 @@ let play = document.querySelector("#play");
 function playing(){
 	play.setAttribute("disabled",true);
 	document.body.appendChild(canvas);
-	canvas.removeAttribute("hidden");
 	let player1 = document.getElementById("player1").value;
 	let player2 = document.getElementById("player2").value;
 
-	var teclas = {};
+	let teclas = {};
 
-	var bola = {
+	let bola = {
 		x: canvas.width / 2 - 15,
 		y: canvas.height / 2 - 15,
 		altura: 30,
@@ -24,7 +23,7 @@ function playing(){
 		speed: 0.7
 	};
 
-	var esquerda = {
+	let esquerda = {
 		x: 0,
 		y: canvas.height / 2 - 60,
 		altura: 120,
@@ -33,7 +32,7 @@ function playing(){
 		speed: 8
 	};
 
-	var direita = {
+	let direita = {
 		x: 590,
 		y: canvas.height / 2 - 60,
 		altura: 120,
@@ -89,6 +88,8 @@ function playing(){
 	function placar(winner){
 		h1 = document.querySelector("#campeao");
 		h1.innerHTML = ("Campeão: " + winner);
+		esquerda.score = 0;
+		direita.score = 0;
 	};
 
 	function newGame(winner) {
